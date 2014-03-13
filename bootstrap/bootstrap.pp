@@ -19,4 +19,4 @@ exec { 'apt-get-update-stale-cache':
 	command => 'apt-get update',
 	onlyif  => 'find /var/lib/apt/lists -maxdepth 0 -mtime +7 | grep "/var/lib/apt/lists"'
 }
-Exec['apt-get-update-very-old-cache'] -> Package <| |>
+Exec['apt-get-update-stale-cache'] -> Package <| |>
