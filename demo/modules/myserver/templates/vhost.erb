@@ -1,0 +1,19 @@
+<VirtualHost *:80>
+	ServerName <%= @server_name %>
+
+	DocumentRoot <%= @document_root %>
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory <%= @document_root %>>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	LogLevel warn
+	ErrorLog ${APACHE_LOG_DIR}/<%= @title %>-error.log
+	CustomLog ${APACHE_LOG_DIR}/<%= @title %>-access.log combined
+</VirtualHost>
